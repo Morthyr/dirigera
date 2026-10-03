@@ -11,10 +11,15 @@ if errorlevel 1 (
 )
 
 py -m pip install -q -r requirements.txt
-py .\dirigera.py
+py -m pip install -q pytest
+py -m pytest -q
 
 if errorlevel 1 (
     echo.
-    echo The DIRIGERA app exited with an error.
+    echo Test run failed. Review the pytest output above.
     exit /b %errorlevel%
 )
+
+echo.
+echo Tests passed.
+exit /b 0

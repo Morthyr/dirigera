@@ -40,12 +40,16 @@ The current implementation has the following behavior:
 - `dirigera_token.txt`: cached bearer token used to avoid re-authentication on next startup.
 - `devices.json`: likely stores device metadata or device state snapshots (needs documentation when used by a future CR).
 - `start.bat`: convenience script for starting the Python process on Windows.
+- `test.bat`: Windows test runner that installs the required Python dependencies and executes the repository test suite.
+- `requirements.txt`: Python dependency list for runtime and test setup.
+- `tests/test_dirigera.py`: repository test suite covering current functionality.
 
 ### Operational assumptions
 - The project assumes a local DIRIGERA gateway reachable at `192.168.0.6`.
 - It is designed for console-based monitoring rather than a web UI or API server.
 - It currently logs events but does not persist them into a database or expose them as a service.
 - It is focused on event observation and token lifecycle management rather than device control.
+- The project must provide a working startup entry point via `start.bat` so the application can be launched from the repository root.
 
 ---
 
@@ -109,6 +113,7 @@ Write each requirement as a testable statement.
 - Maintainability:
 - Logging / observability:
 - User experience:
+- Testing mandate: Every function in the codebase must have unit-test coverage, and every user-facing workflow or use case must have end-to-end test coverage.
 
 ### 2.6 Data and Integration Requirements
 
